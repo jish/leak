@@ -1,0 +1,4 @@
+Leak is the codename for my implementation of PubSub.
+
+Currently, it will parse twitter feeds and update text files.
+These files will be 'published' via DropBox

@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+require 'twitter/user'
+
+user   = Twitter::User.new('cnnbrk')
+tweets = user.timeline
+
+time_threshold = Time.now - 60 * 60 * 24 # 24 hours
+output_dir     = File.expand_path(File.join('~', 'Dropbox', 'pubsub'))
+outfile        = File.join(output_dir, 'cnnbrk')
+output         = ""
+recent_tweets  = tweets.select { |tweet| tweet.created_at > time_threshold }
+
+if recent_tweets.size > 0
+  output = "\nCNN Breaking News:\n"
+  recent_tweets.each { |tweet| output << tweet.to_s }
+  output << "\n"
+end
+
+FileUtils.mkdir_p(output_dir)
+File.open(outfile, 'w') do |file|
+  file.write(output)
+end
