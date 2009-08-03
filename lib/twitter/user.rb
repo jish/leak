@@ -5,8 +5,8 @@ require 'wire_call'
 begin
   require 'rubygems'
   require 'hpricot'
-rescue
-  $stderr.puts 'hpricot not found. execute the following:\n  sudo gem install hpricot\n'
+rescue LoadError => e
+  $stderr.puts "leak: error: hpricot not found.\n  sudo gem install hpricot\n"
   exit(1)
 end
 
