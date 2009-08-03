@@ -13,7 +13,7 @@ module Twitter
     end
 
     def to_s
-      date_format = (created_at < Time.today) ? '%m/%d ' : ''
+      date_format = '%m/%d '
       time_format = date_format + '%I:%m%p'
 
       [created_at.strftime(time_format), ": ", text, "\n"].join
