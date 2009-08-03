@@ -20,3 +20,9 @@ FileUtils.mkdir_p(output_dir)
 File.open(outfile, 'w') do |file|
   file.write(output)
 end
+
+# Making a .txt file for the iPhone.
+# For some reason the iphone can't read the EXACT same file if it has the wrong extension.
+# Did Apple hire Microsoft developers to write mobile Safari?
+FileUtils.cp(outfile, outfile + '.txt')
+
